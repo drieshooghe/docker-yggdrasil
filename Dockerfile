@@ -16,24 +16,24 @@ RUN apt-get update && apt-get install -y \
 
 # Compile Go from source
 ENV GOROOT_BOOTSTRAP /goroot
-ENV GOLANG_VERSION 1.5
+ENV GOLANG_VERSION 1.9
 ADD ./etc/services /etc/services
 RUN \
-    mkdir -p /goroot1.5 && \
-    git clone https://go.googlesource.com/go /goroot1.5 && \
-    cd /goroot1.5 && \
+    mkdir -p /goroot1.9 && \
+    git clone https://go.googlesource.com/go /goroot1.9 && \
+    cd /goroot1.9 && \
     git checkout go$GOLANG_VERSION && \
-    cd /goroot1.5/src && \
+    cd /goroot1.9/src && \
     GOARM=6 ./all.bash
 
 # Set environment variables
-ENV GOROOT /goroot1.5
-ENV GOPATH /gopath1.5
+ENV GOROOT /goroot1.9
+ENV GOPATH /gopath1.9
 ENV GOARM 6
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 # Define working directory
-WORKDIR /gopath1.5
+WORKDIR /gopath1.9
 
 # Define default command
 CMD ["bash"]

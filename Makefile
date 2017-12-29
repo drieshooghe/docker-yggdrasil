@@ -2,7 +2,7 @@
 include VERSION.env
 
 DOCKER_IMAGE_VERSION=$(VERSION)
-DOCKER_IMAGE_NAME=hypriot/rpi-golang
+DOCKER_IMAGE_NAME=drieshooghe/docker-yggdrasil
 
 all: build
 
